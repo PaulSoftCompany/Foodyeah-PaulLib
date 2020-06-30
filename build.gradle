@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
@@ -26,4 +27,22 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.13'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.gradle.sample'
+            artifactId = 'project1-sample'
+            version = '1.1'
+
+            from components.java
+        }
+    }
+
+    repositories {
+    maven {
+        url "https://github.com/PaulSoftCompany/Foodyeah-PaulLib"
+        }
+    }
 }
